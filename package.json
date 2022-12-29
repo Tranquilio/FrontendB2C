@@ -1,0 +1,70 @@
+{
+    "name": "tranquilio",
+    "version": "0.1.0",
+    "proxy": "http://localhost:5000",
+    "private": true,
+    "dependencies": {
+        "@auth0/auth0-react": "^1.12.0",
+        "@testing-library/jest-dom": "^5.16.1",
+        "@testing-library/react": "^13.3.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@typeform/embed-react": "^2.10.0",
+        "@types/jest": "^27.0.3",
+        "@types/node": "^16.11.14",
+        "@types/react": "^18.0.17",
+        "@types/react-dom": "^18.0.6",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "mongoose": "^6.7.0",
+        "nodemon": "^2.0.20",
+        "path-browserify": "^1.0.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.2.1",
+        "react-scripts": "5.0.1",
+        "recharts": "^2.2.0",
+        "three": "^0.121.0",
+        "util": "^0.12.5",
+        "vanta": "^0.5.24",
+        "web-vitals": "^2.1.2"
+    },
+    "devDependencies": {
+        "assert": "^2.0.0",
+        "autoprefixer": "^10.4.8",
+        "buffer": "^5.7.1",
+        "crypto-browserify": "^3.12.0",
+        "https-browserify": "^1.0.0",
+        "os-browserify": "^0.3.0",
+        "postcss": "^8.4.16",
+        "process": "^0.11.10",
+        "react-app-rewired": "^2.2.1",
+        "stream-browserify": "^3.0.0",
+        "stream-http": "^3.2.0",
+        "tailwindcss": "^3.1.8",
+        "url": "^0.11.0",
+        "webpack": "^5.75.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {},
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "browser": {
+        "zlib": false,
+        "stream": false
+    }
+}
