@@ -58,11 +58,11 @@ const MainComponent = () => {
           colorMode: "lerpGradient",
           birdSize: 1.50,
           wingSpan: 10.00,
-          speedLimit: 2.00,
+          speedLimit: 3.00,
           separation: 100.00,
           alignment: 6.00,
           cohesion: 10.00,
-          quantity: 1.00
+          quantity: 2.00
         })
       );
     }
@@ -155,9 +155,8 @@ const MainComponent = () => {
               src="./tranquilio.svg"
               />
               <button className="absolute top-6 right-8 font-light font-raleway text-6xs md:text-5xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 transition duration-200 text-black" onClick={() => loginWithRedirect()}>Log In</button>  
-              
-              <div className="text-[16px] md:text-[32px] mx-8 text-center font-light text-base flex-col font-black font-inter md:px-12">
-                We spend 2/3rd of our waking hours at work. <br/><br/>Find out more about your wellbeing at work with our <br/>psychologically validated assessment.
+              <div className="text-[24px] md:text-[56px] mx-8 text-center font-light text-base flex-col font-black font-inter md:px-12">
+              Get personalized insights to enhance <br/> your wellbeing at work
                 <div onClick={() => setActive(1)}>
                   <PopupButton id="vL8do7c1" className="my-button font-light font-raleway text-5xs md:text-xs bg-white py-2 md:py-4 px-8 md:px-14 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 transition duration-200 text-black mt-20">
                     Start Assessment
