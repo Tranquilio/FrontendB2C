@@ -68,7 +68,7 @@ const MainComponent = () => {
     }
 
     async function loadResponse() {
-      const res = await fetch("https://main.diig5e1v919o3.amplifyapp.com/api/typeform/getresult");
+      const res = await fetch("https://55o91qpfqi.execute-api.ap-southeast-1.amazonaws.com/dev/api/typeform/getresult");
       const data = await res.json();
               
       for (let i = 0; i < data.items.length; i++) {
