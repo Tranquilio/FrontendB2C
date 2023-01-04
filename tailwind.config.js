@@ -2,7 +2,7 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: { fontFamily: { raleway: "Raleway", inter: "Inter" } },
+    extend: { fontFamily: { raleway: "Raleway", inter: "Inter", ptserif: "PT Serif" } },
     colors: {
       white: "#fff",
       black: "#000",
@@ -12,6 +12,7 @@ module.exports = {
       grayerer: '#FBFBFB'
     },
     fontSize: {
+      "6xs": "14px",
       "5xs": "18px",
       "4xs": "20px",
       "3xs": "24px",

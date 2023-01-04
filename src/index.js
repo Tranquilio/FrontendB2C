@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "./global.css";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { ChakraProvider } from "@chakra-ui/react"
 
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
@@ -15,10 +16,11 @@ root.render(
   clientId="VgzY8FmDsVpC2mbyjOiIR0IyA4EPdXth"
   redirectUri={window.location.origin}
   >
-
+    <ChakraProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
+    </ChakraProvider>
 
   </Auth0Provider>
 );
