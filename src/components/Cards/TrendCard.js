@@ -29,9 +29,9 @@ const TrendCard = (props) => {
 
   const data = [
     { month: 'Jan', score: props.jan },
-    { month: 'Feb', score: props.feb },
-    { month: 'Mar', score: props.mar },
-    { month: 'Apr', score: props.apr }
+    // { month: 'Feb', score: props.feb },
+    // { month: 'Mar', score: props.mar },
+    // { month: 'Apr', score: props.apr }
   ];
 
   return (
@@ -41,7 +41,7 @@ const TrendCard = (props) => {
         <div className="flex justify-center items-center font-ptserif mr-10">
           <LineChart width={290} height={270} data={data} yAxis={{height:100}} overflow='visible'>
           <YAxis domain={[0, 100]} />
-          <XAxis dataKey="month" />
+          <XAxis dataKey="month" domain={["Jan", "Feb", "Mar", "Apr"]} min={0} max={3} padding={{left:30}} />
           <YAxis />
           <Tooltip cursor={{fill: 'transparent'}} />
           <Line connectNulls type="monotone" dataKey="score" dot={<CustomizedDot />}/>
