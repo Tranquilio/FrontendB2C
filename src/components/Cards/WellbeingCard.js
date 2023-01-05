@@ -48,7 +48,7 @@ const WellbeingCard = (props) => {
   return (
   <>
     <div className="font-inter overflow-hidden">
-      <div className="flex justify-center font-medium font-ptserif text-[22px]">Stressor Breakdown</div><br/>
+      <div className="flex justify-center font-medium font-ptserif text-[22px]">Wellbeing Breakdown</div><br/>
       <div className="flex justify-center font-inter text-[18px]">
         <PieChart width={330} height={300} delay={200}>
           <Pie
@@ -85,7 +85,8 @@ const WellbeingCard = (props) => {
       </div>
     ))}
     </div>
-  </div><br/></>
+    <div className="mt-5 mb-5 flex justify-center font-medium font-ptserif text-[13px]">Greater score indicates greater wellbeing for the constructs.</div>
+  </div></>
 
   )
 };
