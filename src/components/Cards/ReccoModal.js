@@ -318,7 +318,7 @@ import {
                     </Modal>
                 </>
             )
-        } else if (construct == "ml" && value == "Poor") {
+        } else if (construct == "ol" && value == "Poor") {
             return (
                 <>
                     <div className="font-inter-light text-[15px] ml-5 mt-2">
@@ -327,7 +327,7 @@ import {
                     <Modal isOpen={isOpen} onClose={onClose} size='[14px]'>
                     <ModalOverlay />
                     <ModalContent maxW="800px">
-                        <ModalHeader className="font-ptserif">Poor Management Leadership</ModalHeader>
+                        <ModalHeader className="font-ptserif">Poor Organizational Leadership</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody fontSize='sm'>
                         <Text className="font-medium text-[16px] font-ptserif">
@@ -351,7 +351,7 @@ import {
                     </Modal>
                 </>
             )
-        } else if (construct == "ml" && value == "Satisfactory") {
+        } else if (construct == "ol" && value == "Satisfactory") {
             return (
                 <>
                     <div className="font-inter-light text-[15px] ml-5 mt-2">
@@ -360,7 +360,7 @@ import {
                     <Modal isOpen={isOpen} onClose={onClose} size='[14px]'>
                     <ModalOverlay />
                     <ModalContent maxW="800px">
-                        <ModalHeader className="font-ptserif">Satisfactory Management Leadership</ModalHeader>
+                        <ModalHeader className="font-ptserif">Satisfactory Organizational Leadership</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody fontSize='sm'>
                         <Text className="font-medium text-[16px] font-ptserif">
@@ -384,7 +384,7 @@ import {
                     </Modal>
                 </>
             )
-        } else if (construct == "ml" && value == "Good") {
+        } else if (construct == "ol" && value == "Good") {
             return (
                 <>
                     <div className="font-inter-light text-[15px] ml-5 mt-2">
@@ -393,7 +393,7 @@ import {
                     <Modal isOpen={isOpen} onClose={onClose} size='[14px]'>
                     <ModalOverlay />
                     <ModalContent maxW="800px">
-                        <ModalHeader className="font-ptserif">Good Management Leadership</ModalHeader>
+                        <ModalHeader className="font-ptserif">Good Organizational Leadership</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody fontSize='sm'>
                         <Text className="font-medium text-[16px] font-ptserif">
