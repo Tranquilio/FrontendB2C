@@ -32,7 +32,7 @@ const MainComponent = () => {
   const [workDemand, setWD] = useState([])
   const [workFlexibility, setWF] = useState([])
   const [coworkerRelationship, setCR] = useState([])
-  const [managementLeadership, setML] = useState([])
+  const [organizationalLeadership, setOL] = useState([])
   const [compensation, setC] = useState([])
   const [industryName, setIndustryName] = useState([])
   const [ageName, setAgeName] = useState([])
@@ -75,7 +75,7 @@ const MainComponent = () => {
           setScore(data.items[i].calculated.score);
           setC(data.items[i].variables[0].number);
           setCR(data.items[i].variables[1].number);
-          setML(data.items[i].variables[4].number);
+          setOL(data.items[i].variables[4].number);
           setWD(data.items[i].variables[6].number);
           setWF(data.items[i].variables[7].number);
           for (let j = data.items[i].answers.length-1; j >= 0; j--) {
@@ -111,9 +111,9 @@ const MainComponent = () => {
           <div className="min-h-screen flex items-center">
             <div className="flex-1 max-w-7xl mx-auto p-7 mt-2">
               <ul className="grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-9 md:grid-rows-12 md:gap-8 md:grid-flow-row list-none mt-12">
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><OverallCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} managementLeadership={managementLeadership} compensation={compensation} score={score}/></li>
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><WellbeingCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} managementLeadership={managementLeadership} compensation={compensation} score={score}/></li>
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><InformationCard wdScore={100-workDemand} wfScore={workFlexibility} crScore={coworkerRelationship} mlScore={managementLeadership} cScore={compensation} /></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><OverallCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} organizationalLeadership={organizationalLeadership} compensation={compensation} score={score}/></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><WellbeingCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} organizationalLeadership={organizationalLeadership} compensation={compensation} score={score}/></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><InformationCard wdScore={100-workDemand} wfScore={workFlexibility} crScore={coworkerRelationship} olScore={organizationalLeadership} cScore={compensation} /></li>
                 <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><TrendCard jan={score} feb={null} mar={null} apr={null} /></li>
                 <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><IndustryCard industryName={industryName} score={score} /></li>
                 <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2 "><AgeCard ageName={ageName} score={score} /></li>
