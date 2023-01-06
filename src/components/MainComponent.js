@@ -58,11 +58,11 @@ const MainComponent = () => {
           colorMode: "lerpGradient",
           birdSize: 1.50,
           wingSpan: 10.00,
-          speedLimit: 3.00,
+          speedLimit: 1.00,
           separation: 100.00,
           alignment: 6.00,
           cohesion: 10.00,
-          quantity: 2.00
+          quantity: 1.00
         })
       );
     }
@@ -89,6 +89,9 @@ const MainComponent = () => {
           }          
           break;
         }
+      }
+      if (score == 1) {
+        logout({ returnTo: window.location.origin })
       }
 
     }
@@ -126,7 +129,7 @@ const MainComponent = () => {
     ); 
   }
 
-  else if (isAuthenticated && score == 0) {
+  else if (isAuthenticated && active == 2) {
     return (
       <div ref={vantaRef}>
         <img
@@ -141,7 +144,7 @@ const MainComponent = () => {
       </div>
 
     ); 
-  }
+  } 
 
   else if (!isAuthenticated) {
     return (
@@ -150,16 +153,19 @@ const MainComponent = () => {
             <div ref={vantaRef}>
             <div className="w-screen h-screen flex justify-center items-center">
               <img
-              className="absolute w-28 px-4 py-2 top-6 left-8"
+              className="absolute w-28 px-4 py-2 top-6 left-4 md:left-8"
               alt=""
               src="./tranquilio.svg"
               />
-              <button className="absolute top-6 right-8 font-light font-raleway text-6xs md:text-5xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 transition duration-200 text-black" onClick={() => loginWithRedirect()}>Log In</button>  
-              <div className="text-[24px] md:text-[56px] mx-8 text-center font-light text-base flex-col font-black font-inter md:px-12">
-              Get personalized recommendations <br/> to enhance your wellbeing at work.
-              <div className="text-[16px] md:text-[24px] mt-10">Try Tranquilio’s psychologically validated 30 question assessment for free.</div>
+              <button className="absolute top-6 right-4 md:right-8 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => loginWithRedirect()}>Log In</button>  
+              <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => setActive(1)}>Get Started</button>  
+              <div className="text-[48px] md:text-[56px] mx-8 text-center font-light text-base flex-col font-black font-ptserif md:px-12">
+              {/* Get personalized recommendations <br/> to enhance your wellbeing at work. */}
+              Do you know how stressed you are at work?
+              {/* <div className="text-[16px] font-inter font-light md:text-[24px] mt-10">Try Tranquilio’s psychologically validated 30 question assessment for free.</div> */}
+                  <div className="text-[16px] font-inter font-light md:text-[24px] mt-10">Try out our psychologically validated assessment for free and quick insights.</div>  
                 <div onClick={() => setActive(1)}>
-                  <PopupButton id="vL8do7c1" className="my-button font-light font-raleway text-5xs md:text-xs bg-white py-2 md:py-4 px-8 md:px-14 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 transition duration-200 text-black mt-16">
+                  <PopupButton id="vL8do7c1" className="my-button font-light font-inter text-5xs md:text-2xs bg-white py-2 md:py-4 px-8 md:px-12 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black mt-12">
                     Start Assessment
                   </PopupButton>
                 </div>
