@@ -70,7 +70,6 @@ const MainComponent = () => {
     async function loadResponse() {
       const res = await fetch("https://55o91qpfqi.execute-api.ap-southeast-1.amazonaws.com/dev/api/typeform/getresult");
       const data = await res.json();
-              
       for (let i = 0; i < data.items.length; i++) {
         if (data.items[i].answers[data.items[i].answers.length-1].type == 'email' && data.items[i].answers[data.items[i].answers.length-1].email == user.email) {
           setScore(data.items[i].calculated.score);
@@ -90,9 +89,6 @@ const MainComponent = () => {
           break;
         }
       }
-      if (score == 1) {
-        logout({ returnTo: window.location.origin })
-      }
 
     }
     loadResponse();
@@ -102,49 +98,32 @@ const MainComponent = () => {
     };
   }, [vantaEffect]);
  
-
   if (isAuthenticated) {
     return (
       <div ref={vantaRef}>
         <div>
-          <img className="absolute w-28 px-4 py-2 top-6 left-8" alt="" src="./tranquilio.svg"/>
-          <button className="absolute top-6 right-8 font-light font-raleway text-6xs md:text-5xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 transition duration-200 text-black" onClick={() => logout({ returnTo: window.location.origin })}>Log Out</button>  
-          <div className="absolute invisible md:visible md:top-9 md:right-56 font-raleway">{user.email}</div>
-          <div className="min-h-screen flex items-center">
-            <div className="flex-1 max-w-7xl mx-auto p-7">
-            <ul className="grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-9 md:grid-rows-12 md:gap-8 md:grid-flow-row list-none mt-12">
-              <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><OverallCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} managementLeadership={managementLeadership} compensation={compensation} score={score}/></li>
-              <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><WellbeingCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} managementLeadership={managementLeadership} compensation={compensation} score={score}/></li>
-              <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><InformationCard wdScore={100-workDemand} wfScore={workFlexibility} crScore={coworkerRelationship} mlScore={managementLeadership} cScore={compensation} /></li>
-              <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><TrendCard jan={score} feb={null} mar={null} apr={null} /></li>
-              <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><IndustryCard industryName={industryName} score={score} /></li>
-              <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2 "><AgeCard ageName={ageName} score={score} /></li>
-            </ul>
+          <img className="absolute w-28 px-4 py-2 top-6 left-4 md:left-8" alt="" src="./tranquilio.svg"/>
+          <button className="absolute top-6 right-4 md:right-8 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => logout({ returnTo: window.location.origin })}>Log Out</button>  
+          <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-2 md:px-4 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => window.open('https://3oms1jii0jw.typeform.com/to/vL8do7c1', '_blank')}>Try Assessment</button>  
 
+          
+          <div className="absolute invisible md:visible md:top-8 md:right-80 font-raleway">{user.email}</div>
+          <div className="min-h-screen flex items-center">
+            <div className="flex-1 max-w-7xl mx-auto p-7 mt-2">
+              <ul className="grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-9 md:grid-rows-12 md:gap-8 md:grid-flow-row list-none mt-12">
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><OverallCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} managementLeadership={managementLeadership} compensation={compensation} score={score}/></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><WellbeingCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} managementLeadership={managementLeadership} compensation={compensation} score={score}/></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><InformationCard wdScore={100-workDemand} wfScore={workFlexibility} crScore={coworkerRelationship} mlScore={managementLeadership} cScore={compensation} /></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><TrendCard jan={score} feb={null} mar={null} apr={null} /></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><IndustryCard industryName={industryName} score={score} /></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2 "><AgeCard ageName={ageName} score={score} /></li>
+              </ul>
             </div>
           </div>  
         </div>
       </div>
-
     ); 
   }
-
-  else if (isAuthenticated && active == 2) {
-    return (
-      <div ref={vantaRef}>
-        <img
-          className="absolute w-10 px-2 py-1 top-5 left-5"
-          alt=""
-          src="./back-arrow.svg"
-          onClick={() => logout({ returnTo: window.location.origin })}
-        />
-        <div className="text-center font-light flex justify-center items-center text-base flex-col font-black w-screen h-screen font-raleway">
-          <Widget id="vL8do7c1" style={{ width: '90vw', height: '85vh' }} className="my-form" />
-        </div>
-      </div>
-
-    ); 
-  } 
 
   else if (!isAuthenticated) {
     return (
@@ -159,7 +138,7 @@ const MainComponent = () => {
               />
               <button className="absolute top-6 right-4 md:right-8 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => loginWithRedirect()}>Log In</button>  
               <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => setActive(1)}>Get Started</button>  
-              <div className="text-[48px] md:text-[56px] mx-8 text-center font-light text-base flex-col font-black font-ptserif md:px-12">
+              <div className="text-[40px] md:text-[56px] mx-8 text-center font-light text-base flex-col font-black font-ptserif md:px-12">
               {/* Get personalized recommendations <br/> to enhance your wellbeing at work. */}
               Do you know how stressed you are at work?
               {/* <div className="text-[16px] font-inter font-light md:text-[24px] mt-10">Try Tranquilio’s psychologically validated 30 question assessment for free.</div> */}
