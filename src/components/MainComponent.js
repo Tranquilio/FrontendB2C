@@ -9,7 +9,7 @@ import InformationCard from "./Cards/InformationCard.js";
 import TrendCard from "./Cards/TrendCard.js";
 import IndustryCard from "./Cards/IndustryCard.js";
 import AgeCard from "./Cards/AgeCard.js";
-
+import { useToast, Spinner } from '@chakra-ui/react'
 
 const MainComponent = () => {
   const { loginWithRedirect } = useAuth0();
@@ -18,8 +18,9 @@ const MainComponent = () => {
 
   if (isLoading) {
     return (
-      <div>Loading..</div>
-    );
+      <div>
+      </div>
+      );
   }
 
 
@@ -36,8 +37,8 @@ const MainComponent = () => {
   const [compensation, setC] = useState([])
   const [industryName, setIndustryName] = useState([])
   const [ageName, setAgeName] = useState([])
-
-
+  const toast = useToast()
+  const [isFetching, setIsFetching] = useState(true)
 
   useEffect(() => {
     if (!vantaEffect) {
@@ -83,9 +84,11 @@ const MainComponent = () => {
               setIndustryName(data.items[i].answers[j].choice.label);
             } else if (data.items[i].answers[j].field.id == 'm5LPzGzofDkY') {
               setAgeName(data.items[i].answers[j].choice.label);
+              setIsFetching(false)
               break;
             }
-          }          
+          }      
+          setIsFetching(false)    
           break;
         }
       }
@@ -98,15 +101,16 @@ const MainComponent = () => {
     };
   }, [vantaEffect]);
  
-  if (isAuthenticated) {
+  if (isAuthenticated && !isFetching) {
     return (
       <div ref={vantaRef}>
         <div>
           <img className="absolute w-28 px-4 py-2 top-6 left-4 md:left-8" alt="" src="./tranquilio.svg"/>
           <button className="absolute top-6 right-4 md:right-8 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => logout({ returnTo: window.location.origin })}>Log Out</button>  
-          <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-2 md:px-4 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => window.open('https://3oms1jii0jw.typeform.com/to/vL8do7c1', '_blank')}>Try Assessment</button>  
-
           
+          {score == 1 && <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-2 md:px-4 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => window.open('https://3oms1jii0jw.typeform.com/to/vL8do7c1', '_blank')}>Try Assessment</button>}  
+          {score != 1 && <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-[#e9ecef] py-1 md:py-2 px-2 md:px-4 rounded-md border-2 border-black text-black cursor-not-allowed"           onClick={() => toast({ title: `Assessment Already Completed`, description: "Wait for next month to re-assess your wellbeing.", isClosable: true})}>Try Assessment</button>}  
+
           <div className="absolute invisible md:visible md:top-8 md:right-80 font-raleway">{user.email}</div>
           <div className="min-h-screen flex items-center">
             <div className="flex-1 max-w-7xl mx-auto p-7 mt-2">
@@ -120,6 +124,19 @@ const MainComponent = () => {
               </ul>
             </div>
           </div>  
+        </div>
+      </div>
+    ); 
+  }
+
+  if (isAuthenticated && isFetching) {
+    return (
+      <div ref={vantaRef}>
+        <div>
+        <div className="flex flex-col items-center justify-center h-screen bg-white z-10">
+          <Spinner size="lg" thickness="4px" speed="0.65s" color="#82A284"/><br/>
+          <p className="text-center text-[16px] md:text-[22px] font-raleway">Fetching your wellbeing report</p>
+        </div>
         </div>
       </div>
     ); 
