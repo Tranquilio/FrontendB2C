@@ -92,6 +92,7 @@ const MainComponent = () => {
           break;
         }
       }
+      setIsFetching(false)
 
     }
     loadResponse();
