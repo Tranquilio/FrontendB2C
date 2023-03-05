@@ -113,15 +113,18 @@ const MainComponent = () => {
           {score != 1 && <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-[#e9ecef] py-1 md:py-2 px-2 md:px-4 rounded-md border-2 border-black text-black cursor-not-allowed"           onClick={() => toast({ title: `Assessment Already Completed`, description: "Wait for next month to re-assess your wellbeing.", isClosable: true})}>Try Assessment</button>}  
 
           <div className="absolute invisible md:visible md:top-8 md:right-80 font-raleway">{user.email}</div>
-          <div className="min-h-screen flex items-center">
+        
+          <div className="min-h-screen flex flex-col items-left">
+            
+            <div className="text-[24px] px-24 flex items-end justify-left h-32">Welcome back {user.email}!</div>
             <div className="flex-1 max-w-7xl mx-auto p-7 mt-2">
-              <ul className="grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-9 md:grid-rows-12 md:gap-8 md:grid-flow-row list-none mt-12">
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><OverallCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} organizationalLeadership={organizationalLeadership} compensation={compensation} score={score}/></li>
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><WellbeingCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} organizationalLeadership={organizationalLeadership} compensation={compensation} score={score}/></li>
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><InformationCard wdScore={100-workDemand} wfScore={workFlexibility} crScore={coworkerRelationship} olScore={organizationalLeadership} cScore={compensation} /></li>
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><TrendCard jan={score} feb={null} mar={null} apr={null} /></li>
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><IndustryCard industryName={industryName} score={score} /></li>
-                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2 "><AgeCard ageName={ageName} score={score} /></li>
+              <ul className="grid grid-cols-1 gap-4 md:grid-cols-9 md:grid-rows-9 md:gap-20 list-none mt-12">
+                <li className="col-span-1 row-span-1 md:col-start-1 md:col-end-4 md:row-start-1 md:row-end-3 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><OverallCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} organizationalLeadership={organizationalLeadership} compensation={compensation} score={score}/></li>
+                <li className="col-span-1 row-span-1 md:col-start-4 md:col-end-7 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><WellbeingCard workDemand={100-workDemand} workFlexibility={workFlexibility} coworkerRelationship={coworkerRelationship} organizationalLeadership={organizationalLeadership} compensation={compensation} score={score}/></li>
+                <li className="col-span-1 row-span-1 md:col-start-7 md:col-end-10 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><TrendCard jan={score} feb={null} mar={null} apr={null} /></li>
+                <li className="col-span-1 row-span-1 md:col-start-4 md:col-end-10 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><InformationCard wdScore={100-workDemand} wfScore={workFlexibility} crScore={coworkerRelationship} olScore={organizationalLeadership} cScore={compensation} /></li>
+                {/* <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2"><IndustryCard industryName={industryName} score={score} /></li>
+                <li className="col-span-1 row-span-1 md:col-span-3 md:row-span-6 bg-[#FFFFFF] rounded-lg border border-black shadow-sm p-2 "><AgeCard ageName={ageName} score={score} /></li> */}
               </ul>
             </div>
           </div>  
@@ -148,27 +151,39 @@ const MainComponent = () => {
         <div>          
             {active == 0 &&
             <div ref={vantaRef}>
-            <div className="w-screen h-screen flex justify-center items-center">
               <img
-              className="absolute w-28 px-4 py-2 top-6 left-4 md:left-8"
-              alt=""
-              src="./tranquilio.svg"
+                className="absolute w-28 px-4 py-2 top-6 left-4 md:left-8"
+                alt=""
+                src="./tranquilio.svg"
               />
               <button className="absolute top-6 right-4 md:right-8 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => loginWithRedirect()}>Log In</button>  
               <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => setActive(1)}>Get Started</button>  
-              <div className="text-[40px] md:text-[56px] mx-8 text-center font-light text-base flex-col font-black font-ptserif md:px-12">
-              {/* Get personalized recommendations <br/> to enhance your wellbeing at work. */}
-              Do you know how stressed you are at work?
-              {/* <div className="text-[16px] font-inter font-light md:text-[24px] mt-10">Try Tranquilio’s psychologically validated 30 question assessment for free.</div> */}
+              
+              <div className="w-screen h-screen flex justify-center items-center">
+                <div className="text-[40px] md:text-[56px] mx-8 text-center font-light text-base font-black font-ptserif md:px-12">
+                  {/* Get personalized recommendations <br/> to enhance your wellbeing at work. */}
+                  Do you know how stressed you are at work?
+                  {/* <div className="text-[16px] font-inter font-light md:text-[24px] mt-10">Try Tranquilio’s psychologically validated 30 question assessment for free.</div> */}
                   <div className="text-[16px] font-inter font-light md:text-[24px] mt-10">Try out our psychologically validated assessment for free and quick insights.</div>  
-                <div onClick={() => setActive(1)}>
-                  <PopupButton id="vL8do7c1" className="my-button font-light font-inter text-5xs md:text-2xs bg-white py-2 md:py-4 px-8 md:px-12 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black mt-12">
-                    Start Assessment
-                  </PopupButton>
+                  <div onClick={() => setActive(1)}>
+                    <PopupButton id="vL8do7c1" className="my-button font-light font-inter text-5xs md:text-2xs bg-white py-2 md:py-4 px-8 md:px-12 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black mt-12">
+                      Start Assessment
+                    </PopupButton>
+                  </div>
                 </div>
               </div>
-              
-              </div></div>}
+
+              <div className="h-screen w-screen flex flex-col justify-center items-center">
+                <div style={{height: "10vh"}} className="text-[40px] md:text-[40px] mx-8 text-center font-light text-base font-black font-ptserif md:px-12">How it works</div>
+                  <div style={{height: "50vh"}}className="w-screen flex justify-evenly items-center">
+                    <div className="w-4/12 text-[20px] font-inter font-light md:text-[28px] mt-10">Do a quick wellbeing assessment to understand your stress levels at work</div>
+                    <video className="w-4/12" controls>
+                      <source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" type="video/mp4"/>
+                    </video>
+                </div>
+              </div>
+
+            </div>}
   
             {active == 1 &&
             <div ref={vantaRef}>
@@ -180,8 +195,40 @@ const MainComponent = () => {
               />
               <div className="text-center font-light flex justify-center items-center text-base flex-col font-black w-screen h-screen font-raleway">
                 <Widget id="vL8do7c1" style={{ width: '90vw', height: '85vh' }} className="my-form" />
-              </div></div>}
-  
+              </div>
+            </div>}
+
+            {/* {active == 1 &&
+            <div ref={vantaRef} className="overflow-scroll">
+              <img
+                className="absolute w-28 px-4 py-2 top-6 left-4 md:left-8"
+                alt=""
+                src="./tranquilio.svg"
+                onClick={() => setActive(0)}
+              />
+              <button className="absolute top-6 right-4 md:right-8 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => loginWithRedirect()}>Log In</button>  
+              <button className="absolute top-6 right-28 md:right-40 font-light font-inter text-6xs md:text-7xs bg-white py-1 md:py-2 px-4 md:px-8 rounded-md border-2 border-black hover:-translate-y-1 hover:-translate-x-1 hover:border-b-4 hover:border-r-4 hover:bg-[#E1EFDF] transition duration-200 text-black" onClick={() => setActive(1)}>Get Started</button>  
+              <div className="grid grid-cols-1 gap-4">
+                <div className="h-screen w-screen flex flex-col justify-center items-center">
+                  <div style={{height: "10vh"}} className="text-[40px] md:text-[40px] mx-8 text-center font-light text-base font-black font-ptserif md:px-12">How it works</div>
+                  <div style={{height: "50vh"}}className="w-screen flex justify-evenly items-center">
+                    <div className="w-4/12 text-[20px] font-inter font-light md:text-[28px] mt-10">Do a quick wellbeing assessment to understand your stress levels at work</div>
+                    <video className="w-4/12" controls>
+                      <source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" type="video/mp4"/>
+                    </video>
+                  </div>
+                </div>
+                <div className="h-screen w-screen flex flex-col justify-center items-center">
+                  <div style={{height: "10vh"}} className="text-[40px] md:text-[40px] mx-8 text-center font-light text-base font-black font-ptserif md:px-12">How it works</div>
+                  <div style={{height: "50vh"}}className="w-screen flex justify-evenly items-center">
+                    <div className="w-4/12 text-[20px] font-inter font-light md:text-[28px] mt-10">Part 2</div>
+                    <video className="w-4/12" controls>
+                      <source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ" type="video/mp4"/>
+                    </video>
+                  </div>
+                </div>
+              </div> */}
+            {/* </div>} */}
         </div>
   
     );

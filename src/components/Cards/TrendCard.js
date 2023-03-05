@@ -36,7 +36,8 @@ const TrendCard = (props) => {
 
   return (
     <div className="font-inter overflow-hidden">
-      <div className="flex justify-center font-medium font-ptserif text-[22px]">Monthly Wellbeing Trends</div>
+      <div className="flex px-3 justify-start font-bold font-ptserif text-[22px]">Trends</div><br/>
+      {/* <div className="flex justify-center font-medium font-ptserif text-[22px]">Monthly Wellbeing Trends</div> */}
         <br/>
         <div className="flex justify-center items-center font-ptserif mr-10">
           <LineChart width={290} height={270} data={data} yAxis={{height:100}} overflow='visible'>

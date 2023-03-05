@@ -48,7 +48,8 @@ const WellbeingCard = (props) => {
   return (
   <>
     <div className="font-inter overflow-hidden">
-      <div className="flex justify-center font-medium font-ptserif text-[22px]">Wellbeing Breakdown</div><br/>
+      <div className="flex px-3 justify-start font-bold font-ptserif text-[22px]">Wellbeing</div><br/>
+      {/* <div className="flex justify-center font-medium font-ptserif text-[22px]">Wellbeing Breakdown</div><br/> */}
       <div className="flex justify-center font-inter text-[14px]">
         <PieChart width={300} height={250} delay={200}>
           <Pie
